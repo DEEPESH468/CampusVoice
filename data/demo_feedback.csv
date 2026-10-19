@@ -1,0 +1,37 @@
+feedback_id,comment,department,semester,sentiment
+D01,"The teachers explain difficult topics clearly and answer questions.",Computer Science,3,Positive
+D02,"Faculty are supportive and lectures are engaging.",Computer Science,2,Positive
+D03,"The professor gives useful examples during class.",Electronics,4,Positive
+D04,"Teachers rarely explain the concepts and rush through lectures.",Computer Science,5,Negative
+D05,"The faculty ignores questions and class feels confusing.",Mechanical,3,Negative
+D06,"Lectures are poorly organized and hard to follow.",Electronics,2,Negative
+D07,"The laboratory computers are fast and the practical sessions are useful.",Computer Science,4,Positive
+D08,"Lab equipment is broken and several experiments cannot be completed.",Electronics,5,Negative
+D09,"The laboratory needs newer equipment and better maintenance.",Mechanical,6,Negative
+D10,"Practical sessions provide good hands-on learning.",Computer Science,2,Positive
+D11,"We completed the syllabus on time with helpful course material.",Electronics,4,Positive
+D12,"The syllabus is incomplete and important units were skipped.",Computer Science,6,Negative
+D13,"Course content is outdated and needs revision.",Mechanical,3,Negative
+D14,"The curriculum is relevant to the subject.",Electronics,2,Positive
+D15,"Exam questions were clear and aligned with the lectures.",Computer Science,5,Positive
+D16,"The examination schedule changed at the last minute.",Electronics,6,Negative
+D17,"Grading instructions were confusing and marks were delayed.",Mechanical,4,Negative
+D18,"The test was fair and covered the taught material.",Computer Science,3,Positive
+D19,"Classrooms are clean and have comfortable seats.",Electronics,1,Positive
+D20,"The classroom projector does not work and desks are damaged.",Computer Science,2,Negative
+D21,"The building washrooms need cleaning and repair.",Mechanical,5,Negative
+D22,"The new classroom is bright and comfortable.",Electronics,3,Positive
+D23,"Campus WiFi is reliable in the library and labs.",Computer Science,4,Positive
+D24,"Internet is extremely slow and disconnects during online classes.",Electronics,5,Negative
+D25,"The online portal is easy to use.",Mechanical,2,Positive
+D26,"The network drops during lectures and online submissions fail.",Computer Science,6,Negative
+D27,"Administration staff helped me complete registration quickly.",Electronics,1,Positive
+D28,"The student office takes too long to answer requests.",Computer Science,3,Negative
+D29,"Scholarship processing is delayed and communication is poor.",Mechanical,4,Negative
+D30,"The timetable and administration service were handled well.",Electronics,2,Positive
+D31,"The library has a useful collection of books and journals.",Computer Science,1,Positive
+D32,"There are not enough current books in the library.",Mechanical,3,Negative
+D33,"The reading room is quiet and useful for studying.",Electronics,5,Positive
+D34,"Study material is outdated and library hours are too short.",Computer Science,4,Negative
+D35,"The cafeteria serves lunch and opens at noon.",Mechanical,2,Neutral
+D36,"The campus has a large garden near the main gate.",Electronics,1,Neutral
