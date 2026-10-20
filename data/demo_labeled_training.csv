@@ -1,37 +1,301 @@
-comment,sentiment
-The lecturer explains difficult concepts clearly and welcomes questions,Positive
-Faculty feedback is thoughtful and helps me improve,Positive
-The professor gives useful examples in every class,Positive
-Teaching assistants are patient and supportive,Positive
-The instructor makes the subject engaging,Positive
-Class notes are organized and easy to follow,Positive
-The course content is relevant and well structured,Positive
-The lab staff are helpful during practical sessions,Positive
-The library has a good range of useful study books,Positive
-The online portal is reliable and easy to use,Positive
-The classroom is comfortable and the projector works well,Positive
-The assessment instructions are clear and fair,Positive
-The lecture was fine and covered the planned material,Neutral
-The course is acceptable but nothing stood out this week,Neutral
-The lab session followed the usual schedule,Neutral
-The library was open during the hours listed,Neutral
-The portal displays the course timetable,Neutral
-We completed the assigned topic in class,Neutral
-The exam included questions from the course material,Neutral
-"The classroom has desks, chairs, and a whiteboard",Neutral
-The lecture started at the scheduled time,Neutral
-The department shared the semester calendar,Neutral
-The course has both lectures and practical sessions,Neutral
-The assignment instructions were provided online,Neutral
-The lecturer rushes through lessons and ignores questions,Negative
-The professor gives confusing explanations and unhelpful feedback,Negative
-The lab equipment is broken and needs repair,Negative
-The practical session was poorly organized and too short,Negative
-The course content is outdated and difficult to understand,Negative
-The exam schedule changed late and caused confusion,Negative
-The grading criteria are unclear and feel unfair,Negative
-The internet connection is slow and unreliable,Negative
-The classroom projector is broken and seats are uncomfortable,Negative
-The library lacks current books and study materials,Negative
-The portal frequently crashes during assignment submission,Negative
-Administrative responses are delayed and unhelpful,Negative
+comment,sentiment,topic_group
+Dr Shah explains difficult theories with clear examples from current research.,Positive,faculty
+"Questions are welcomed in lectures, and the instructor answers them thoughtfully.",Positive,faculty
+The teaching assistant gave patient one to one help before the lab.,Positive,faculty
+Our lecturer noticed the class was struggling and changed the pace helpfully.,Positive,faculty
+"Feedback on essays was specific, encouraging, and useful for the next assignment.",Positive,faculty
+The professor connects abstract ideas to situations we see outside college.,Positive,faculty
+"Office hours are easy to access, and faculty follow up on concerns.",Positive,faculty
+I found the demonstrations engaging because the teacher explained each step.,Positive,faculty
+Guest lectures added useful perspectives to the material we studied in class.,Positive,faculty
+The instructor shares organized notes before class and explains them clearly.,Positive,faculty
+"Lectures move too quickly, and questions are brushed aside before we understand.",Negative,faculty
+The professor often arrives late and skips important parts of the lesson.,Negative,faculty
+I waited several days for help and received no useful response from faculty.,Negative,faculty
+"Instructions change between classes, leaving our group unsure what to prepare.",Negative,faculty
+The lecture slides are copied from elsewhere and contain several confusing errors.,Negative,faculty
+My assignment feedback arrived after the next submission deadline had passed.,Negative,faculty
+The instructor reads from slides without explaining the difficult concepts.,Negative,faculty
+Students who ask questions are made to feel that they are wasting time.,Negative,faculty
+There has been no replacement teacher for our course since the term began.,Negative,faculty
+The examples were unrelated to the subject and made the topic harder to follow.,Negative,faculty
+The faculty member covered chapters four and five during this week's lectures.,Neutral,faculty
+Our class has two lectures with the same instructor every Monday.,Neutral,faculty
+Office hours take place in the department room on Wednesday afternoons.,Neutral,faculty
+The lecturer shared a reading list for the upcoming unit.,Neutral,faculty
+There are forty students registered in the section this semester.,Neutral,faculty
+The teaching assistant collected our worksheets at the end of class.,Neutral,faculty
+A visiting professor spoke about research methods during the scheduled seminar.,Neutral,faculty
+The course instructor posted lecture slides on the class portal.,Neutral,faculty
+Tutorial groups meet after the main lecture according to the timetable.,Neutral,faculty
+The faculty office is located on the second floor of the academic block.,Neutral,faculty
+"Every workstation worked during our practical, so we finished each experiment on time.",Positive,laboratories
+The lab supervisor carefully demonstrated the equipment before we began the exercise.,Positive,laboratories
+Updated computers made the programming session much smoother than last term.,Positive,laboratories
+We had enough materials to repeat the experiment and compare our results.,Positive,laboratories
+Technicians quickly helped our group when we needed to recalibrate a sensor.,Positive,laboratories
+"The laboratory is clean, well organized, and ready before each scheduled session.",Positive,laboratories
+"Practical instructions were clear, with safety steps explained before any equipment use.",Positive,laboratories
+Having smaller lab groups meant everyone got useful hands on practice.,Positive,laboratories
+The chemistry benches have the tools needed for all assigned procedures.,Positive,laboratories
+"Our project lab stayed open late, giving us time to complete testing.",Positive,laboratories
+"Half the computers shut down, and our group lost its practical work.",Negative,laboratories
+Several microscopes are out of focus and no one has repaired them.,Negative,laboratories
+We share one working instrument among too many students during experiments.,Negative,laboratories
+The lab was locked for our scheduled session without any advance notice.,Negative,laboratories
+Broken safety goggles were left on the bench for students to use.,Negative,laboratories
+"Software licenses expired, so the class could not run the required analysis.",Negative,laboratories
+The technician was unavailable when the equipment began producing inconsistent readings.,Negative,laboratories
+There are not enough materials to let each student complete the experiment.,Negative,laboratories
+The lab manual skips steps that are necessary to operate the apparatus safely.,Negative,laboratories
+Poor ventilation makes the practical room uncomfortable throughout the afternoon session.,Negative,laboratories
+Our physics practical is scheduled in laboratory three every other Friday.,Neutral,laboratories
+Students recorded the voltage readings in their lab notebooks this morning.,Neutral,laboratories
+The computer lab has thirty desktop machines arranged in five rows.,Neutral,laboratories
+Each chemistry group submitted one report after the titration exercise.,Neutral,laboratories
+Protective coats are stored beside the entrance to the laboratory.,Neutral,laboratories
+The biology lab session lasted two hours according to the timetable.,Neutral,laboratories
+A technician checked the balances before the class began its measurements.,Neutral,laboratories
+The electronics room contains soldering stations and circuit testing equipment.,Neutral,laboratories
+We used the supplied sample tubes for the afternoon experiment.,Neutral,laboratories
+Lab attendance was recorded at the start of the practical class.,Neutral,laboratories
+The exam questions matched the topics emphasized in lectures and tutorials.,Positive,examinations
+Clear grading rubrics helped me understand how marks were awarded.,Positive,examinations
+Our midterm gave enough time to show the reasoning behind each answer.,Positive,examinations
+Practice problems were similar in style to the final assessment.,Positive,examinations
+The examiner explained the marking scheme and answered our review questions.,Positive,examinations
+My results were returned promptly with helpful notes on mistakes.,Positive,examinations
+The online quiz saved answers correctly even when my connection briefly dropped.,Positive,examinations
+"Assessment dates were shared early, which made planning revision much easier.",Positive,examinations
+The project counted toward our grade in a way that reflected the effort involved.,Positive,examinations
+"Rechecking my paper was straightforward, and the score correction was handled fairly.",Positive,examinations
+The exam included material that was never taught or listed in the syllabus.,Negative,examinations
+We received the timetable change only hours before the test began.,Negative,examinations
+"Questions were worded ambiguously, so several answers could have been interpreted differently.",Negative,examinations
+My marks were reduced without any explanation of the grading criteria.,Negative,examinations
+The online examination froze repeatedly and submitted blank responses.,Negative,examinations
+There was not enough time to complete the unusually long question paper.,Negative,examinations
+Two exams were scheduled on the same morning despite our reported conflict.,Negative,examinations
+The rubric arrived after we had already submitted the final project.,Negative,examinations
+Our answer sheets have still not been returned several weeks after the examination.,Negative,examinations
+The invigilator gave different instructions to students in different rows.,Negative,examinations
+The semester examination is scheduled for the second week of December.,Neutral,examinations
+Our class completed a multiple choice quiz during the morning session.,Neutral,examinations
+The final paper contained five questions across three printed pages.,Neutral,examinations
+Results were published through the student portal on Tuesday afternoon.,Neutral,examinations
+A practical test followed the written examination for laboratory students.,Neutral,examinations
+The assessment calendar lists one midterm and one final exam.,Neutral,examinations
+Students were asked to bring their college identification cards to the hall.,Neutral,examinations
+The course grade includes a presentation and two written assignments.,Neutral,examinations
+Answer booklets were collected by the invigilation team after the test.,Neutral,examinations
+The retake examination will take place in the main hall.,Neutral,examinations
+Renovated classrooms have comfortable chairs and enough space for group activities.,Positive,infrastructure
+The new projector displays diagrams clearly from the back of the room.,Positive,infrastructure
+Water stations on each floor are clean and easy to reach.,Positive,infrastructure
+The reading rooms stay quiet during exam season and have plenty of seats.,Positive,infrastructure
+Campus lighting was improved along the route between the library and hostels.,Positive,infrastructure
+The accessible entrance makes it easier to reach the science building.,Positive,infrastructure
+Recently repaired washrooms are clean and stocked throughout the day.,Positive,infrastructure
+The expanded library has useful study areas for both individuals and teams.,Positive,infrastructure
+Reliable elevators help students move between floors with heavy equipment.,Positive,infrastructure
+The common area has enough tables for students to work between classes.,Positive,infrastructure
+"Ceiling fans barely work, making afternoon lectures difficult to sit through.",Negative,infrastructure
+Rainwater leaks into our classroom and damages books left near the windows.,Negative,infrastructure
+The accessible lift has been out of service for most of this month.,Negative,infrastructure
+Broken desks wobble during lectures and several chairs have sharp edges.,Negative,infrastructure
+Washrooms near the auditorium are frequently out of water and soap.,Negative,infrastructure
+The library reading room fills up early because too few seats are available.,Negative,infrastructure
+Construction noise carries into classrooms during scheduled teaching hours.,Negative,infrastructure
+Dim lights in the corridor make it hard to read room signs at night.,Negative,infrastructure
+The lecture hall air conditioning has not worked since the term began.,Negative,infrastructure
+There is no sheltered path between the bus stop and the academic block.,Negative,infrastructure
+The main library is located beside the central administration building.,Neutral,infrastructure
+Our department has six classrooms on the ground and first floors.,Neutral,infrastructure
+The auditorium seats approximately four hundred people for college events.,Neutral,infrastructure
+Students can reserve a study room at the circulation desk.,Neutral,infrastructure
+The campus has separate buildings for engineering and social sciences.,Neutral,infrastructure
+A drinking water station is installed outside the lecture hall.,Neutral,infrastructure
+The central courtyard connects the library with the cafeteria.,Neutral,infrastructure
+The west wing has two elevators and a staircase at each end.,Neutral,infrastructure
+Facilities staff inspect classrooms during the morning opening routine.,Neutral,infrastructure
+The college gym is located behind the student activity center.,Neutral,infrastructure
+Campus Wi-Fi stayed stable during my video seminar and file upload.,Positive,wifi_technology
+The IT desk resolved my login issue while I waited between classes.,Positive,wifi_technology
+Wireless coverage now reaches the courtyard where our study group meets.,Positive,wifi_technology
+The student portal loads quickly and keeps my course calendar in sync.,Positive,wifi_technology
+A clear setup guide helped me connect my laptop to the campus network.,Positive,wifi_technology
+Online library access makes journal articles available from the hostel.,Positive,wifi_technology
+The new network handles large class downloads without interrupting our work.,Positive,wifi_technology
+I can submit assignments from my phone without the site timing out.,Positive,wifi_technology
+Technology staff sent helpful updates during the planned maintenance period.,Positive,wifi_technology
+The classroom audio system pairs reliably with the lecture computer.,Positive,wifi_technology
+Wi-Fi drops whenever many students connect in the lecture hall.,Negative,wifi_technology
+The portal rejects my correct password and the reset email never arrives.,Negative,wifi_technology
+Uploading coursework takes several attempts because the site keeps timing out.,Negative,wifi_technology
+There is no reliable internet signal in the upper floors of our block.,Negative,wifi_technology
+The network blocks software needed for our programming assignment.,Negative,wifi_technology
+IT support closed my ticket without fixing the recurring login problem.,Negative,wifi_technology
+Video lectures buffer constantly even when other campus services are quiet.,Negative,wifi_technology
+The outdated portal hides important notices behind confusing menus.,Negative,wifi_technology
+Wireless access disappears in the library study rooms after the evening.,Negative,wifi_technology
+The classroom speakers crackle so much that recorded lectures are hard to hear.,Negative,wifi_technology
+Students connect to the campus network using their college email credentials.,Neutral,wifi_technology
+The IT help desk is beside the computer center on the ground floor.,Neutral,wifi_technology
+A maintenance notice listed a network outage from midnight until two.,Neutral,wifi_technology
+Course materials are posted on the learning portal each Monday.,Neutral,wifi_technology
+The library provides access to several academic journal databases online.,Neutral,wifi_technology
+Our lecture room has a desktop computer connected to the projector.,Neutral,wifi_technology
+The password policy requires students to update credentials every semester.,Neutral,wifi_technology
+Technical support accepts service requests through an online form.,Neutral,wifi_technology
+The campus website lists department contacts and academic calendars.,Neutral,wifi_technology
+Students receive portal notifications when instructors post new materials.,Neutral,wifi_technology
+The registrar explained the form requirements and processed my transcript quickly.,Positive,administration
+A staff member helped me correct a timetable clash before classes started.,Positive,administration
+Scholarship questions were answered clearly by the financial aid office.,Positive,administration
+The admissions team kept me informed at each step of enrollment.,Positive,administration
+I received a confirmation email as soon as my course registration was complete.,Positive,administration
+The department office found a solution when my records showed the wrong section.,Positive,administration
+Student services helped arrange an accessible room for my examination.,Positive,administration
+The fee receipt was available online immediately after payment.,Positive,administration
+Office staff were courteous and guided me to the right form.,Positive,administration
+My document request was completed on the day it was submitted.,Positive,administration
+I visited the registrar three times because nobody could explain the missing form.,Negative,administration
+My scholarship application has had no update despite several follow up emails.,Negative,administration
+Course registration closed before the office corrected its timetable error.,Negative,administration
+The student services desk sent me to different offices without resolving anything.,Negative,administration
+I paid the fee twice because the payment page gave no confirmation.,Negative,administration
+Requests for transcripts remain unanswered weeks after the stated deadline.,Negative,administration
+The administration announced a policy change after students had registered.,Negative,administration
+Long queues form at the only counter open during lunch hours.,Negative,administration
+My records still show the wrong program after submitting correction documents.,Negative,administration
+No one at the office could tell me how to appeal the decision.,Negative,administration
+The registrar's office opens at nine and closes at four on weekdays.,Neutral,administration
+Enrollment forms are available from the student services counter.,Neutral,administration
+The department office is located in room 214 of the east wing.,Neutral,administration
+Students submit scholarship applications before the published annual deadline.,Neutral,administration
+A notice listed the dates for course add and drop requests.,Neutral,administration
+Fee payments can be made online or at the finance counter.,Neutral,administration
+The office distributes student identity cards during orientation week.,Neutral,administration
+Transcript requests require a completed form and proof of payment.,Neutral,administration
+The academic calendar was posted on the college notice board.,Neutral,administration
+Administrative offices observe the holiday schedule published by the university.,Neutral,administration
+The placement team shared relevant openings and helped tailor my resume.,Positive,placements
+Mock interviews gave me useful practice before the campus recruitment drive.,Positive,placements
+Alumni speakers explained how they prepared for technical interviews.,Positive,placements
+Career counselors reviewed my portfolio and suggested realistic next steps.,Positive,placements
+The internship fair brought employers whose roles matched our course skills.,Positive,placements
+I received timely guidance about aptitude tests and application deadlines.,Positive,placements
+The placement office arranged an extra workshop on communicating project work.,Positive,placements
+"Company presentations clearly described roles, locations, and selection stages.",Positive,placements
+Career services helped me find an internship related to environmental engineering.,Positive,placements
+The resume clinic gave practical feedback that improved my applications.,Positive,placements
+"Placement notices arrive late, leaving little time to prepare applications.",Negative,placements
+The advertised interview workshop was cancelled without a replacement session.,Negative,placements
+Most campus roles require skills that our courses have not covered.,Negative,placements
+Career office staff gave conflicting advice about eligibility for the same company.,Negative,placements
+The placement portal failed while I was submitting my application documents.,Negative,placements
+There were too few employers at the fair for our graduating program.,Negative,placements
+No one explained why eligible students were excluded from the shortlist.,Negative,placements
+The internship list has not been updated since the previous academic year.,Negative,placements
+We were asked to attend interviews with almost no notice.,Negative,placements
+Career counseling appointments are fully booked for the entire recruitment period.,Negative,placements
+The placement cell circulated a list of companies visiting next month.,Neutral,placements
+Final year students registered for the campus recruitment orientation.,Neutral,placements
+The career office maintains a calendar of employer information sessions.,Neutral,placements
+Several graduates attended the alumni networking event on Friday.,Neutral,placements
+Students uploaded resumes to the placement portal before the deadline.,Neutral,placements
+The recruitment process included an aptitude test and two interviews.,Neutral,placements
+A representative from the career center visited our tutorial group.,Neutral,placements
+The college internship program runs during the summer break.,Neutral,placements
+Company details were shared with students in the final semester.,Neutral,placements
+The placement office is located next to the main auditorium.,Neutral,placements
+The new bus timetable lines up well with our earliest morning lectures.,Positive,transport
+Drivers have been patient when traffic delays students returning to campus.,Positive,transport
+An extra evening shuttle makes it easier to attend library study sessions.,Positive,transport
+The route map clearly shows stops near both hostels and classrooms.,Positive,transport
+Buses are clean and usually arrive within the posted time window.,Positive,transport
+The transport desk quickly arranged a pass replacement after I lost mine.,Positive,transport
+A campus shuttle now connects the remote parking area to the central gate.,Positive,transport
+Accessible seating is available on the buses used for campus routes.,Positive,transport
+Live arrival updates helped me avoid waiting outside in heavy rain.,Positive,transport
+The morning bus has enough space for students carrying project equipment.,Positive,transport
+The last bus leaves before our evening laboratory finishes.,Negative,transport
+Morning shuttles are so crowded that students are left at the stop.,Negative,transport
+Routes changed without notice and the posted maps are now incorrect.,Negative,transport
+"Several buses arrive late, making us miss the first lecture.",Negative,transport
+There is no campus transport for students staying for weekend projects.,Negative,transport
+The bus pass reader often fails and drivers ask us to pay again.,Negative,transport
+Poor lighting at the shuttle stop makes waiting there uncomfortable after dark.,Negative,transport
+The route skips the hostel area where many first year students live.,Negative,transport
+The transport office has not responded to reports about unsafe driving.,Negative,transport
+Rain leaks through the bus windows during the long ride to campus.,Negative,transport
+The campus bus makes four trips between the station and college each day.,Neutral,transport
+Transport passes are issued from the office near the main gate.,Neutral,transport
+The shuttle timetable is displayed inside each campus bus.,Neutral,transport
+Route C stops at the library before continuing to the hostel block.,Neutral,transport
+Students showed their transport passes when boarding this morning.,Neutral,transport
+The bus depot is located behind the sports complex.,Neutral,transport
+A new route was added to the transport schedule this semester.,Neutral,transport
+The evening shuttle leaves the main gate at six thirty.,Neutral,transport
+Drivers record passenger counts at the end of each route.,Neutral,transport
+The college operates buses for students living outside the city center.,Neutral,transport
+"The canteen serves fresh meals, and vegetarian options are clearly marked.",Positive,canteen
+Staff handled the lunch rush efficiently while keeping tables clean.,Positive,canteen
+Affordable breakfast is available early enough for students with morning classes.,Positive,canteen
+The new menu includes healthier choices and lists common allergens.,Positive,canteen
+There are enough seats to eat comfortably between consecutive lectures.,Positive,canteen
+Canteen workers were kind when I asked about ingredients in a dish.,Positive,canteen
+Water and reusable cutlery are easy to find near the serving counter.,Positive,canteen
+The evening snack stall stays open for students leaving the library.,Positive,canteen
+Food portions are generous for the price charged to students.,Positive,canteen
+The cafeteria has a separate counter that keeps queues moving quickly.,Positive,canteen
+Food is often cold by the time students reach the end of the queue.,Negative,canteen
+The canteen runs out of lunch before the afternoon classes finish.,Negative,canteen
+Tables remain sticky for hours and bins overflow near the seating area.,Negative,canteen
+"Prices increased again, but the portions have become noticeably smaller.",Negative,canteen
+There are almost no vegetarian meals after the first lunch sitting.,Negative,canteen
+The kitchen ignored my allergy question and could not identify ingredients.,Negative,canteen
+Long queues make it impossible to eat between short class breaks.,Negative,canteen
+The drinking water tap near the cafeteria has tasted unpleasant all week.,Negative,canteen
+"Food hygiene looks poor, and plates are sometimes still dirty.",Negative,canteen
+The canteen closes early even when evening classes are in progress.,Negative,canteen
+The cafeteria is located between the student center and the library.,Neutral,canteen
+Lunch is served from noon until two on regular class days.,Neutral,canteen
+A menu board lists meals and prices beside the main counter.,Neutral,canteen
+Students can pay with cash or their campus identity card.,Neutral,canteen
+The canteen has indoor tables and a small outdoor seating area.,Neutral,canteen
+A tea stall operates near the north entrance during the afternoon.,Neutral,canteen
+The cafeteria employs separate counters for snacks and full meals.,Neutral,canteen
+Reusable trays are stacked beside the dish return window.,Neutral,canteen
+Breakfast service begins at seven thirty in the morning.,Neutral,canteen
+The student committee meets with cafeteria staff once each month.,Neutral,canteen
+The syllabus balances theory with projects that resemble work in the field.,Positive,curriculum
+Elective choices let me connect my major with subjects I care about.,Positive,curriculum
+"Course materials build gradually, so later topics make sense in context.",Positive,curriculum
+Our curriculum includes current tools used by researchers and employers.,Positive,curriculum
+The capstone project helped me combine skills from several earlier courses.,Positive,curriculum
+Reading lists include a useful mix of textbooks and recent papers.,Positive,curriculum
+Weekly objectives make it clear how each unit supports the course outcomes.,Positive,curriculum
+The interdisciplinary module gave our class a broader view of the subject.,Positive,curriculum
+Practical assignments reinforce concepts instead of repeating lecture exercises.,Positive,curriculum
+The department updated the course content after collecting student suggestions.,Positive,curriculum
+Several syllabus units are skipped every year because the schedule is unrealistic.,Negative,curriculum
+Our course materials rely on outdated examples that no longer fit the field.,Negative,curriculum
+"Required electives overlap, so students cannot register for both subjects.",Negative,curriculum
+The curriculum has little practical work despite being advertised as hands on.,Negative,curriculum
+"Important prerequisites are missing, making advanced modules difficult to follow.",Negative,curriculum
+Too many unrelated topics are packed into one short semester.,Negative,curriculum
+The reading list has broken links and books unavailable in our library.,Negative,curriculum
+"Course outcomes are vague, so it is hard to know what we should learn.",Negative,curriculum
+Student feedback about the overloaded syllabus has not led to any revisions.,Negative,curriculum
+We repeat the same introductory material across several required courses.,Negative,curriculum
+"The curriculum contains core courses, electives, and a final year project.",Neutral,curriculum
+Our program requires students to complete eight semesters of study.,Neutral,curriculum
+The syllabus is divided into six units with separate reading lists.,Neutral,curriculum
+A curriculum committee reviews program requirements every academic year.,Neutral,curriculum
+Students select two electives during the registration period.,Neutral,curriculum
+"The course outline lists objectives, readings, and assessment dates.",Neutral,curriculum
+The program includes both classroom instruction and supervised projects.,Neutral,curriculum
+A new elective was added to the catalog for next semester.,Neutral,curriculum
+The department publishes curriculum details on its academic website.,Neutral,curriculum
+Students complete foundational courses before choosing a specialization.,Neutral,curriculum
