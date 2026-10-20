@@ -28,11 +28,14 @@ def discover_topics(comments: Sequence[str], sentiments: Sequence[str] | None = 
         indices = np.flatnonzero(assignment == topic_id)
         if len(indices) == 0:
             continue
-        top_words = terms[model.components_[topic_id].argsort()[::-1][:5]].tolist()
+        top_indices = model.components_[topic_id].argsort()[::-1][:5]
+        top_words = terms[top_indices].tolist()
         indices = sorted(indices, key=lambda i: weights[i, topic_id], reverse=True)
         neg = sum(1 for i in indices if sentiments and sentiments[i] == "Negative")
         output.append({"topic_id": topic_id, "name": " / ".join(top_words[:3]), "terms": top_words,
                        "count": len(indices), "negative_count": neg,
                        "negative_proportion": neg / len(indices),
-                       "representatives": [comments[i] for i in indices[:3]]})
+                       "representatives": [comments[i] for i in indices[:3]],
+                       "term_weights": [float(model.components_[topic_id, i]) for i in top_indices],
+                       "member_indices": [int(i) for i in indices]})
     return sorted(output, key=lambda t: int(t["count"]), reverse=True)
