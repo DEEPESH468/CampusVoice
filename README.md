@@ -27,9 +27,9 @@ Upload the rich CSV from the sidebar. CampusVoice predicts sentiment with the VA
 
 ## Train a supervised model
 
-Open **Train Sentiment Model & Evaluation**. Upload a separate CSV with `comment,sentiment`; extra metadata is allowed. Check the detected class counts and preview, then choose **Train model and evaluate holdout**. A stratified holdout is used only when there are enough examples in every class; the vectorizer is fitted inside a scikit-learn Pipeline on the training partition. The active model is then separately fitted on all labelled rows and retained in the current Streamlit session for subsequent feedback predictions. Changing the training file marks the prior model stale until retrained.
+Open **Train Sentiment Model & Evaluation**. Upload a separate CSV with `comment,sentiment`; extra metadata is allowed. An optional `topic_group` column keeps related examples together during a reproducible stratified 80/20 holdout. Exact duplicate comments are removed before evaluation; conflicting duplicate labels/groups are rejected. The vectorizer is fitted inside a scikit-learn Pipeline on the training partition. The active model is then separately fitted on all labelled rows and retained in the current Streamlit session for subsequent feedback predictions. Changing the training file marks the prior model stale until retrained.
 
-The page also provides a downloadable labelled template and an optional hand-labelled synthetic demonstration set. Synthetic examples are fictional and are not evidence of real-world model performance. A model can be trained with two or more classes even when the sample is too small for valid holdout metrics; in that case the app explains why evaluation is unavailable rather than inventing scores. One-class training data is rejected.
+The page also provides a downloadable labelled template and an optional 300-row balanced synthetic demonstration set covering ten feedback topics. Synthetic examples are fictional and are not evidence of real-world model performance. A model can be trained with two or more classes even when the sample is too small for valid holdout metrics; in that case the app explains why evaluation is unavailable rather than inventing scores. One-class training data is rejected. Small held-out sets are explicitly flagged.
 
 ## Reading evaluation results
 
