@@ -36,3 +36,20 @@ def test_sidebar_pages_render_their_own_content_with_feedback_loaded():
         app.radio[0].set_value(page).run()
         assert not app.exception, f"{page}: {[error.message for error in app.exception]}"
         assert any(block.value == heading for block in app.subheader), page
+
+
+def test_synthetic_training_page_runs_grouped_holdout_and_shows_actual_metrics():
+    app = AppTest.from_file("app.py", default_timeout=60).run()
+    app.radio[0].set_value("Train Sentiment Model & Evaluation").run()
+    app.button[0].click().run()  # Load the separate labelled training demo.
+    app.button[1].click().run()  # Train and evaluate.
+
+    assert not app.exception
+    assert any(metric.label == "Accuracy" for metric in app.metric)
+    assert any(metric.label == "Macro precision" for metric in app.metric)
+    assert any(metric.label == "Macro recall" for metric in app.metric)
+    assert any(metric.label == "Macro F1" for metric in app.metric)
+    assert any(metric.label == "Test rows" and metric.value == "60" for metric in app.metric)
+    assert any("240 train / 60 test" in item.value for item in app.markdown)
+    assert any("Held-out topic groups" in item.value for item in app.caption)
+    assert any("synthetic demonstration examples" in item.value for item in app.warning)
