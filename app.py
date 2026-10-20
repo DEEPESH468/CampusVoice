@@ -374,10 +374,10 @@ elif page == "Actionable Insights":
 elif page == "Train Sentiment Model & Evaluation":
     st.subheader("Train Sentiment Model")
     st.caption("Use verified sentiment labels to fit a classifier, then evaluate it on held-out examples before applying it to feedback.")
-    st.write("Train a local TF-IDF + Logistic Regression pipeline from human-labelled examples. The optional stratified holdout evaluates a separate model fitted only on the training partition; after that, the active session model is fitted on all labelled training rows.")
+    st.write("Train a local TF-IDF + Logistic Regression pipeline from labelled examples. A reproducible stratified 80/20 holdout evaluates a separate model fitted only on the training partition; when topic_group is supplied, whole groups stay together. After evaluation, the active session model is fitted on all labelled training rows.")
     template = pd.DataFrame(columns=["comment", "sentiment"])
     st.download_button("Download labelled CSV template", template.to_csv(index=False).encode("utf-8"), "campusvoice_labelled_template.csv", "text/csv")
-    load_training_demo = st.button("Load Labelled Demo Dataset", help="36 hand-labelled synthetic examples; not real student feedback or validation data.")
+    load_training_demo = st.button("Load Labelled Demo Dataset", help="300 balanced synthetic examples across 10 feedback topics; not real student feedback or validation data.")
     if load_training_demo:
         demo = pd.read_csv(ROOT / "data" / "demo_labeled_training.csv")
         st.session_state.training_data = demo
@@ -430,12 +430,13 @@ elif page == "Train Sentiment Model & Evaluation":
         if len(set(labels)) < 2:
             st.error("Training needs at least two sentiment classes. This dataset currently has only one.")
         else:
-            st.caption("Training readiness: at least two classes detected. Held-out metrics require at least 8 rows and enough examples in each class.")
+            st.caption("Training readiness: at least two classes detected. Evaluation uses a reproducible 80/20 holdout; when topic_group is available, complete topic groups are held out to reduce template/topic leakage.")
             if st.button("Train model and evaluate holdout", type="primary"):
                 try:
                     evaluation = None
                     try:
-                        evaluation = compare_models(training_data.comment.astype(str).tolist(), labels)
+                        evaluation_groups = training_data.topic_group.astype(str).tolist() if "topic_group" in training_data else None
+                        evaluation = compare_models(training_data.comment.astype(str).tolist(), labels, groups=evaluation_groups)
                     except ValueError as exc:
                         st.warning(f"Model can train, but held-out evaluation is unavailable: {exc}")
                     model = train_classifier(training_data.comment.astype(str).tolist(), labels)
@@ -451,8 +452,12 @@ elif page == "Train Sentiment Model & Evaluation":
         if st.session_state.get("evaluation_result"):
             result = st.session_state.evaluation_result
             st.markdown(f"### Held-out evaluation · {result['train_size']} train / {result['test_size']} test")
-            st.caption("Metrics below use only held-out comments for scoring. The active model above is separately fitted on all labelled rows.")
+            st.caption(f"{result['split_strategy'].capitalize()} · exact duplicate comments removed before splitting: {result['duplicates_removed']}. Metrics use held-out comments only; the active model above is separately fitted on all labelled rows.")
             metrics = result["logistic_regression"]
+            if result["test_size"] < 30 or min(result["test_class_counts"].values()) < 10:
+                st.warning("The held-out evaluation set is small. Its metrics can vary substantially with a few comments and should be treated as an unreliable estimate, especially for individual classes.")
+            if result.get("test_groups") is not None:
+                st.caption(f"Held-out topic groups: {', '.join(result['test_groups'])}")
             mcols = st.columns(5)
             mcols[0].metric("Accuracy", f"{metrics['accuracy']:.3f}")
             mcols[1].metric("Macro precision", f"{metrics['macro_precision']:.3f}")
