@@ -4,6 +4,7 @@ from __future__ import annotations
 from typing import Sequence
 
 import numpy as np
+import pandas as pd
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, precision_recall_fscore_support
 from sklearn.model_selection import StratifiedGroupKFold, train_test_split
 
@@ -35,6 +36,19 @@ def compare_models(
     if groups is not None and len(groups) != len(texts):
         raise ValueError("Comments and topic groups must have the same number of rows.")
 
+    normalized_groups: list[str] | None = None
+    if groups is not None:
+        normalized_groups = []
+        for group in groups:
+            try:
+                is_missing = bool(pd.isna(group))
+            except (TypeError, ValueError):
+                is_missing = False
+            value = "" if is_missing else str(group).strip()
+            if not value:
+                raise ValueError("Topic groups must be present and non-empty for every labelled comment.")
+            normalized_groups.append(value)
+
     clean_texts: list[str] = []
     clean_labels: list[str] = []
     clean_groups: list[str] = []
@@ -50,15 +64,15 @@ def compare_models(
             prior = seen[key]
             if clean_labels[prior] != label:
                 raise ValueError("An exact duplicate comment has conflicting sentiment labels; resolve it before evaluation.")
-            if groups is not None and clean_groups[prior] != str(groups[i]).strip():
+            if normalized_groups is not None and clean_groups[prior] != normalized_groups[i]:
                 raise ValueError("An exact duplicate comment has conflicting topic groups; resolve it before evaluation.")
             duplicates_removed += 1
             continue
         seen[key] = len(clean_texts)
         clean_texts.append(text)
         clean_labels.append(label)
-        if groups is not None:
-            clean_groups.append(str(groups[i]).strip())
+        if normalized_groups is not None:
+            clean_groups.append(normalized_groups[i])
 
     texts, labels = clean_texts, clean_labels
     counts = {label: list(labels).count(label) for label in set(labels)}
@@ -77,14 +91,21 @@ def compare_models(
     else:
         # Five folds approximate an 80/20 split while ensuring a topic group
         # can never occur in both partitions. Pick the valid fold closest to target.
-        splitter = StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=random_state)
+        group_count = len(set(clean_groups))
+        if group_count < 2:
+            raise ValueError("A group-aware holdout requires at least two distinct topic groups.")
+        splitter = StratifiedGroupKFold(n_splits=min(5, group_count), shuffle=True, random_state=random_state)
         candidates = []
         y_array = np.asarray(labels)
         g_array = np.asarray(clean_groups)
         all_classes = set(counts)
-        for candidate_train, candidate_test in splitter.split(np.zeros(len(texts)), y_array, g_array):
-            if set(y_array[candidate_train]) == all_classes and set(y_array[candidate_test]) == all_classes:
-                candidates.append((candidate_train, candidate_test))
+        try:
+            splits = splitter.split(np.zeros(len(texts)), y_array, g_array)
+            for candidate_train, candidate_test in splits:
+                if set(y_array[candidate_train]) == all_classes and set(y_array[candidate_test]) == all_classes:
+                    candidates.append((candidate_train, candidate_test))
+        except ValueError as exc:
+            raise ValueError(f"Could not create a valid group-aware holdout: {exc}") from exc
         if not candidates:
             raise ValueError("Could not create a topic-group holdout containing every class in both partitions. Add more labelled examples across topic groups.")
         train_idx, test_idx = min(candidates, key=lambda pair: abs(len(pair[1]) / len(texts) - test_size))
