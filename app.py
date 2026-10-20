@@ -12,8 +12,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from src.aspects import detect_aspects
-from src import data_loader
-from src.evaluation import compare_models
+from src import data_loader, evaluation as evaluation_module
 from src.insights import generate_insights
 from src.reporting import markdown_report
 from src.sentiment import predict_classifier, train_classifier, vader_score
@@ -21,9 +20,14 @@ from src.topic_modeling import discover_topics
 
 ROOT = Path(__file__).resolve().parent
 data_loader = reload(data_loader)
+evaluation_module = reload(evaluation_module)
 EXPECTED_DATA_LOADER = (ROOT / "src" / "data_loader.py").resolve()
 if Path(data_loader.__file__).resolve() != EXPECTED_DATA_LOADER:
     raise ImportError(f"CampusVoice loaded an unexpected data loader: {data_loader.__file__}; expected {EXPECTED_DATA_LOADER}")
+EXPECTED_EVALUATION = (ROOT / "src" / "evaluation.py").resolve()
+if Path(evaluation_module.__file__).resolve() != EXPECTED_EVALUATION:
+    raise ImportError(f"CampusVoice loaded an unexpected evaluator: {evaluation_module.__file__}; expected {EXPECTED_EVALUATION}")
+compare_models = evaluation_module.compare_models
 DEMO_PATH = ROOT / "data" / "demo_feedback.csv"
 COLORS = {"Positive": "#8eae91", "Negative": "#d88778", "Neutral": "#a3a9a4", "Unclassified": "#717873"}
 NAV = ["Executive Overview", "Sentiment Analytics", "Aspect Analysis", "Topic Discovery",
