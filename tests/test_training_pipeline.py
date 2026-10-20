@@ -51,6 +51,21 @@ def test_holdout_evaluation_fits_vectorizer_without_test_comments():
     assert "classification_report" in result
 
 
+def test_ungrouped_holdout_is_reproducible_stratified_80_20():
+    texts, labels = [], []
+    for label, phrase in [("Positive", "helpful faculty"), ("Negative", "broken wifi"), ("Neutral", "weekly lecture")]:
+        for i in range(20):
+            texts.append(f"{phrase} observation {i}")
+            labels.append(label)
+    first = compare_models(texts, labels)
+    second = compare_models(texts, labels)
+    assert first["split_strategy"] == "stratified random split"
+    assert first["train_size"] == 48
+    assert first["test_size"] == 12
+    assert first["texts_test"] == second["texts_test"]
+    assert set(first["test_class_counts"].values()) == {4}
+
+
 def test_synthetic_demo_is_balanced_and_group_holdout_prevents_topic_leakage():
     demo = pd.read_csv(Path(__file__).parents[1] / "data" / "demo_labeled_training.csv")
     assert len(demo) >= 300
@@ -63,6 +78,8 @@ def test_synthetic_demo_is_balanced_and_group_holdout_prevents_topic_leakage():
     assert 0.15 <= result["test_size"] / len(demo) <= 0.25
     assert set(result["train_groups"]).isdisjoint(result["test_groups"])
     assert set(result["test_class_counts"]) == {"Positive", "Negative", "Neutral"}
+    assert all(support > 0 for support in result["train_class_counts"].values())
+    assert all(support > 0 for support in result["test_class_counts"].values())
     assert set(result["logistic_regression"]["per_class"]) == {"Positive", "Negative", "Neutral"}
     assert sum(x["support"] for x in result["logistic_regression"]["per_class"].values()) == result["test_size"]
 
@@ -84,3 +101,30 @@ def test_exact_duplicate_with_conflicting_sentiment_is_rejected():
     with pytest.raises(ValueError, match="conflicting sentiment"):
         compare_models(["Helpful faculty", " helpful   Faculty "] + [f"bad wifi {i}" for i in range(8)],
                        ["Positive", "Negative"] + ["Negative"] * 8)
+
+
+def test_missing_or_mismatched_groups_are_rejected():
+    texts, labels = labelled_examples()
+    with pytest.raises(ValueError, match="same number of rows"):
+        compare_models(texts, labels, groups=["topic"])
+    groups = ["topic-a"] * len(texts)
+    groups[0] = None
+    with pytest.raises(ValueError, match="present and non-empty"):
+        compare_models(texts, labels, groups=groups)
+
+
+def test_impossible_group_class_coverage_fails_instead_of_random_fallback():
+    texts, labels, groups = [], [], []
+    for label, group in [("Positive", "positive-topic"), ("Negative", "negative-topic"), ("Neutral", "neutral-topic")]:
+        for i in range(10):
+            texts.append(f"{label.lower()} example {i}")
+            labels.append(label)
+            groups.append(group)
+    with pytest.raises(ValueError, match="containing every class"):
+        compare_models(texts, labels, groups=groups)
+
+
+def test_group_holdout_requires_more_than_one_distinct_group():
+    texts, labels = labelled_examples()
+    with pytest.raises(ValueError, match="at least two distinct topic groups"):
+        compare_models(texts, labels, groups=["single-topic"] * len(texts))
